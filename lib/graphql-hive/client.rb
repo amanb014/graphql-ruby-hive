@@ -24,8 +24,8 @@ module GraphQL
         request = build_request(uri, body)
         response = http.request(request)
 
-        @options[:logger].info("#{response.inspect}, #{response.code}")
-        @options[:logger].info(response.body.inspect)
+        @options[:logger].info("Hive response: #{response.inspect}, #{response.code}")
+        @options[:logger].info("Hive response body: #{response.body.inspect}")
       rescue => e
         @options[:logger].fatal("Failed to send data: #{e}")
       end
