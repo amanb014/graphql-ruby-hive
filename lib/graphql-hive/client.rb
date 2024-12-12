@@ -24,8 +24,8 @@ module GraphQL
         request = build_request(uri, body)
         response = http.request(request)
 
-        @options[:logger].debug(response.inspect)
-        @options[:logger].debug(response.body.inspect)
+        @options[:logger].info("#{response.inspect}, #{response.code}")
+        @options[:logger].info(response.body.inspect)
       rescue => e
         @options[:logger].fatal("Failed to send data: #{e}")
       end

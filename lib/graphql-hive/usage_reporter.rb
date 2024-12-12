@@ -64,7 +64,7 @@ module GraphQL
               end
             rescue => e
               buffer = []
-              @options[:logger].error(e)
+              @options[:logger].error("Error in hive usage reporting: #{e}")
             end
           end
 
@@ -75,6 +75,7 @@ module GraphQL
         rescue => e
           # ensure configured logger receives exception as well in setups where STDERR might not be
           # monitored.
+          @options.logger.error("Error in Hive Reporting thread: #{e}")
           @options[:logger].error(e)
         end
       end
